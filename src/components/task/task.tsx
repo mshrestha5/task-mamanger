@@ -1,8 +1,9 @@
 import React, { FC, ReactElement } from 'react';
+import { TaskHeader } from './_taskHeader';
 
 import { Box } from '@mui/material';
 
-export const Task: FC = (props): ReactElement => {
+export const Task: FC = (): ReactElement => {
   return (
     <Box
       display="flex"
@@ -20,7 +21,7 @@ export const Task: FC = (props): ReactElement => {
       }}
     >
       Test
-      {/* Task Header*/}
+      <TaskHeader/>
       {/* Task Description*/}
       {/* Task Footer*/}
     </Box>
