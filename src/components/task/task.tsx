@@ -2,11 +2,13 @@ import React, { FC, ReactElement } from 'react';
 
 import { Box } from '@mui/material';
 import { ITask } from './interfaces/ITask';
-import { Priority } from '../createTaskForm/enums/Priority';
-import { Status } from '../createTaskForm/enums/Status';
+import { Priority } from '../createTaskForm/enum/Priority';
+import PropTypes from 'prop-types';
+//import { Status } from '../createTaskForm/enum/Status';
 import { TaskDescription } from './_taskDescription';
 import { TaskFooter } from './_taskFooter';
 import { TaskHeader } from './_taskHeader';
+import { renderPriorityBorderColor } from './helpers/renderPriorityBorderColor';
 
 export const Task: FC<ITask> = (props): ReactElement => {
   //  Destructure props
@@ -14,8 +16,8 @@ export const Task: FC<ITask> = (props): ReactElement => {
     title = 'Test Title',
     date = new Date(),
     description = 'Lorem ipsum dolor sit amet',
-    priority = Priority.normal,
-    status = Status.completed,
+    priority = Priority.high,
+    //status = Status.completed,
     onStatusChange = (e) => console.log(e),
     onClick = (e) => console.log(e),
   } = props;
@@ -33,7 +35,7 @@ export const Task: FC<ITask> = (props): ReactElement => {
         backgroundColor: 'background.paper',
         borderRadius: '8px',
         border: '1px solid',
-        borderColor: 'error.light',
+        borderColor: renderPriorityBorderColor(priority),
       }}
     >
       <TaskHeader title={title} date={date} />
@@ -44,4 +46,14 @@ export const Task: FC<ITask> = (props): ReactElement => {
       />
     </Box>
   );
+};
+
+Task.propTypes = {
+  title: PropTypes.string,
+  date: PropTypes.instanceOf(Date),
+  description: PropTypes.string,
+  onStatusChange: PropTypes.func,
+  onClick: PropTypes.func,
+  priority: PropTypes.string,
+  status: PropTypes.string,
 };
