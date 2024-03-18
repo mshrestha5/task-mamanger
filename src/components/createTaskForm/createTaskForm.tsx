@@ -5,6 +5,7 @@ import { TaskTitleField } from './_taskTitleField';
 import { TaskDescriptionField } from './_taskDescriptionField'; 
 import { Stack } from '@mui/material';
 import { TaskDateField } from './_taskDateField';
+import { TaskSelectField } from './_taskSelectField';
 
 export const CreateTaskForm: FC = (
     
@@ -24,6 +25,10 @@ export const CreateTaskForm: FC = (
       <TaskTitleField/>
       <TaskDescriptionField/>
       <TaskDateField/>
+      <Stack direction="row" spacing={2}>
+        <TaskSelectField/>
+         <TaskSelectField/>
+      </Stack>
       </Stack>
     </Box>
   )
