@@ -6,6 +6,9 @@ import { TaskDescriptionField } from './_taskDescriptionField';
 import { Stack } from '@mui/material';
 import { TaskDateField } from './_taskDateField';
 import { TaskSelectField } from './_taskSelectField';
+import { Status } from './enum/Status';
+import { Priority } from './enum/Priority';
+
 
 export const CreateTaskForm: FC = (
     
@@ -25,9 +28,40 @@ export const CreateTaskForm: FC = (
       <TaskTitleField/>
       <TaskDescriptionField/>
       <TaskDateField/>
-      <Stack direction="row" spacing={2}>
-        <TaskSelectField/>
-         <TaskSelectField/>
+      <Stack sx={{ width: '100%' }} direction="row" spacing={2}>
+      <TaskSelectField
+            label="Status"
+            name="status"
+            items={[
+              {
+                value: Status.todo,
+                label: Status.todo.toUpperCase(),
+              },
+              {
+                value: Status.inProgress,
+                label: Status.inProgress.toUpperCase(),
+              },
+            ]}
+          />
+          <TaskSelectField
+            label="Priority"
+            name="priority"
+            items={[
+              {
+                value: Priority.low,
+                label: Priority.low,
+              },
+              {
+                value: Priority.normal,
+                label: Priority.normal,
+              },
+              {
+                value: Priority.high,
+                label: Priority.high,
+              },
+            ]}
+          />
+
       </Stack>
       </Stack>
     </Box>
