@@ -1,5 +1,6 @@
 import React, { FC, ReactElement } from 'react';
 import { TaskHeader } from './_taskHeader';
+import { TaskDescription } from './_taskDescription';
 
 import { Box } from '@mui/material';
 
@@ -22,7 +23,7 @@ export const Task: FC = (): ReactElement => {
     >
       Test
       <TaskHeader/>
-      {/* Task Description*/}
+      <TaskDescription/>
       {/* Task Footer*/}
     </Box>
   );
