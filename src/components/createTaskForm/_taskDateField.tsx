@@ -3,15 +3,17 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { IDateField } from './interfaces/IDateField';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import PropTypes from 'prop-types';
-import { TextField } from '@mui/material';
 import React, { FC, ReactElement } from 'react';
 
 
-export const TaskDateField: FC<IDateField> = (props,): ReactElement => {
+export const TaskDateField: FC<IDateField> = (
+    props,
+    ): ReactElement => {
     //destructure
-    const {value: Date(), 
-        disabled: false, 
-        onChange: (date) => console.log(date),
+    const {
+        value = new Date(),  
+        disabled = false, 
+        onChange = (date) => console.log(date),
     } = props;
     
     return(
@@ -19,18 +21,19 @@ export const TaskDateField: FC<IDateField> = (props,): ReactElement => {
         <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DesktopDatePicker 
               label="Task Date"
-              inputFormat="dd/MM/yyyy"
+              format="dd/MM/yyyy"
               value={value}
               onChange={onChange}
               disabled={disabled}
-              renderInput={(params) => 
-                (                          
-                   <TextField {...params} />
-                )}
+            //   renderInput={() => 
+            //     (                          
+            //        <TextField {...params} />
+            //     )}
             />
         </LocalizationProvider>
         </>
-    )
+    );
+                }
 
 TaskDateField.propTypes = {
     disabled: PropTypes.bool,
